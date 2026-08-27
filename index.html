@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biozin - Suplemento Alimenticio</title>
+    <style>
+        /* Reset e Variáveis de Cores Baseadas na Imagem */
+        :root {
+            --primary-blue: #0b3982;
+            --light-blue: #eef4fc;
+            --accent-red: #e60000;
+            --text-dark: #222222;
+            --text-muted: #555555;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-blue);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Cabeçalho Neutro */
+        header {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 15px 20px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        header .badge {
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Container Principal */
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        /* Seção Hero (Apresentação Factual) */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            padding: 40px;
+            text-align: center;
+            border-bottom: 2px solid var(--light-blue);
+        }
+
+        @media(min-width: 768px) {
+            .hero {
+                flex-direction: row;
+                text-align: left;
+                align-items: center;
+                gap: 40px;
+            }
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-content h1 {
+            color: var(--primary-blue);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .hero-content p.subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .features-list li {
+            margin-bottom: 10px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-align: left;
+        }
+
+        .features-list li::before {
+            content: "✓";
+            color: var(--primary-blue);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .price-box {
+            background-color: var(--light-blue);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .price-box .price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        /* Botão de Reserva */
+        .cta-button {
+            display: inline-block;
+            width: 100%;
+            background-color: var(--accent-red);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 18px 20px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            box-shadow: 0 6px 15px rgba(230, 0, 0, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(230, 0, 0, 0.4);
+            background-color: #cc0000;
+        }
+        
+        .cod-notice {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        /* Ingredientes - Factual */
+        .ingredients {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .ingredients h2 {
+            color: var(--primary-blue);
+            margin-bottom: 30px;
+        }
+
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .ingredient-item h3 {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .ingredient-item p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Rodapé e Políticas Obrigatórias */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            background-color: #f9f9f9;
+        }
+
+        .disclaimer {
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            border: 1px solid #ddd;
+            padding: 15px;
+            background-color: var(--white);
+            text-align: left;
+        }
+
+        .disclaimer strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .footer-links a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho (Factual e Descritivo) -->
+    <header>
+        <div class="badge">🛒 Reserva Segura</div>
+        <div class="badge">📦 Entrega a Domicilio</div>
+        <div class="badge">💵 Pago Contra Entrega</div>
+    </header>
+
+    <main class="container">
+        <!-- Seção Principal -->
+        <section class="hero">
+            
+            <!-- ========================================== -->
+            <!-- LOCAL DA IMAGEM DO PRODUTO                 -->
+            <!-- ========================================== -->
+            <div class="hero-image">
+                <img src="biozin.produto.png" alt="Frasco de Biozin">
+            </div>
+            <!-- ========================================== -->
+            
+            <div class="hero-content">
+                <h1>BIOZIN</h1>
+                <p class="subtitle">Suplemento Alimenticio en Cápsulas</p>
+                
+                <ul class="features-list">
+                    <li>Elaborado con ingredientes de origen natural.</li>
+                    <li>Sugerencia de consumo: 1 cápsula 2 veces al día.</li>
+                    <li>Presentación en frasco de cápsulas.</li>
+                    <li>Opción de pago al momento de recibir el producto.</li>
+                </ul>
+
+                <div class="price-box">
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Precio al público:</p>
+                    <div class="price">$790 MXN</div> 
+                </div>
+
+                <!-- LINK DO AFILIADO -->
+                <a href="https://hvyoa.doctornutrplus.com/l/?sub1={gclid}" class="cta-button">
+                    RESERVAR AHORA
+                </a>
+                <span class="cod-notice">Pago en efectivo al momento de la entrega.</span>
+            </div>
+        </section>
+
+        <!-- Seção de Ingredientes (Estritamente Factual) -->
+        <section class="ingredients">
+            <h2>Ingredientes de Biozin</h2>
+            <div class="ingredients-grid">
+                <div class="ingredient-item">
+                    <h3>Ginkgo Biloba</h3>
+                    <p>Extracto de hoja.</p>
+                </div>
+                <div class="ingredient-item">
+                    <h3>Complejo de Vitaminas</h3>
+                    <p>Contiene Vitamina B y E.</p>
+                </div>
+                <div class="ingredient-item">
+                    <h3>Zinc</h3>
+                    <p>Ingrediente mineral.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé (Regras COFEPRIS e Google) -->
+    <footer>
+        <div class="disclaimer">
+            <strong>Declaración obligatoria:</strong>
+            ESTE PRODUCTO NO ES UN MEDICAMENTO. EL CONSUMO DE ESTE PRODUCTO ES RESPONSABILIDAD DE QUIEN LO RECOMIENDA Y DE QUIEN LO USA. La información proporcionada tiene fines descriptivos y no sustituye la consulta con un profesional de la salud.
+        </div>
+        
+        <p>&copy; 2026 Biozin Oficial México. Todos los derechos reservados.</p>
+        
+        <div class="footer-links" style="margin-top: 15px;">
+            <a href="#">Términos y Condiciones</a> | 
+            <a href="#">Política de Privacidad</a> | 
+            <a href="#">Contacto</a>
+        </div>
+    </footer>
+
+</body>
+</html>
